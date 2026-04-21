@@ -5,10 +5,20 @@ import { Send, MapPin, Mail, Phone } from "lucide-react";
 import { ThreeDCard } from "./3d/ThreeDCard";
 import { ThreeDIcon } from "./3d/ThreeDIcon";
 
-const ContactSection = () => {
+interface ContactSectionProps {
+  data: any;
+}
+
+const ContactSection: React.FC<ContactSectionProps> = ({ data }) => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
-  const [focused, setFocused] = useState<string | null>(null);
+  const { personal } = data;
+
+  const contactItems = [
+    { icon: MapPin, label: "Geographic Hub", value: personal.location || "Available", color: "hsl(var(--teal))" },
+    { icon: Mail, label: "Digital Node", value: personal.email, href: `mailto:${personal.email}`, color: "hsl(var(--primary))" },
+    { icon: Phone, label: "Voice Channel", value: personal.phone, href: `tel:${personal.phone}`, color: "hsl(var(--electric))" },
+  ].filter(item => item.value);
 
   return (
     <section id="contact" className="relative py-32 px-6 overflow-hidden" ref={ref}>
@@ -83,11 +93,7 @@ const ContactSection = () => {
 
           {/* Contact Info */}
           <div className="lg:col-span-2 space-y-6">
-            {[
-              { icon: MapPin, label: "Geographic Hub", value: "Cumming, GA (Open to Relocate)", color: "hsl(var(--teal))" },
-              { icon: Mail, label: "Digital Node", value: "sowjanyaallam.dev@gmail.com", href: "mailto:sowjanyaallam.dev@gmail.com", color: "hsl(var(--primary))" },
-              { icon: Phone, label: "Voice Channel", value: "+1 (361) 737-2643", href: "tel:+13617372643", color: "hsl(var(--electric))" },
-            ].map((item, i) => (
+            {contactItems.map((item, i) => (
               <ThreeDCard key={item.label}>
                 <motion.div
                   initial={{ opacity: 0, x: 30 }}
@@ -102,7 +108,7 @@ const ContactSection = () => {
                     <div>
                       <p className="text-[10px] text-muted-foreground font-heading font-black uppercase tracking-[0.2em] mb-1">{item.label}</p>
                       {item.href ? (
-                        <a href={item.href} className="text-base font-heading font-black text-foreground hover:text-primary transition-colors tracking-tight">{item.value}</a>
+                        <a href={item.href} className="text-base font-heading font-black text-foreground hover:text-primary transition-colors tracking-tight text-wrap break-all">{item.value}</a>
                       ) : (
                         <p className="text-base font-heading font-black text-foreground tracking-tight">{item.value}</p>
                       )}
@@ -112,7 +118,6 @@ const ContactSection = () => {
               </ThreeDCard>
             ))}
             
-            {/* Additional Status Card */}
             <ThreeDCard>
               <div className="p-8 rounded-3xl bg-primary/5 border border-primary/20 flex flex-col items-center justify-center text-center">
                 <div className="w-3 h-3 rounded-full bg-green-500 animate-ping mb-4" />

@@ -5,18 +5,14 @@ import { Award, ExternalLink } from "lucide-react";
 import { ThreeDCard } from "./3d/ThreeDCard";
 import { ThreeDIcon } from "./3d/ThreeDIcon";
 
-const certifications = [
-  { name: "Databricks Fundamentals Accreditation", issuer: "Databricks" },
-  { name: "Introduction to Large Language Models", issuer: "Google Cloud" },
-  { name: "Google Cloud Data Engineering Professional Certificate", issuer: "Coursera" },
-  { name: "Data Engineering on Google Cloud", issuer: "Coursera" },
-  { name: "Azure Data Engineer Associate Learning Path", issuer: "LinkedIn Learning" },
-  { name: "Learning Data Engineering Foundations", issuer: "LinkedIn Learning" },
-];
+interface CertificationsSectionProps {
+  data: any;
+}
 
-const CertificationsSection = () => {
+const CertificationsSection: React.FC<CertificationsSectionProps> = ({ data }) => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+  const certifications = data.certifications || [];
 
   return (
     <section id="certifications" className="relative py-32 px-6 overflow-hidden" ref={ref}>
@@ -24,8 +20,8 @@ const CertificationsSection = () => {
         <SectionHeader title="Professional" accent="Certifications" subtitle="Specializations" />
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
-          {certifications.map((cert, i) => (
-            <ThreeDCard key={cert.name}>
+          {certifications.map((cert: any, i: number) => (
+            <ThreeDCard key={i}>
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={inView ? { opacity: 1, scale: 1 } : {}}
@@ -37,23 +33,32 @@ const CertificationsSection = () => {
                 </div>
                 <div className="flex-1 flex flex-col">
                   <span className="text-[10px] font-heading font-black tracking-[0.3em] text-primary uppercase mb-2">
-                    {cert.issuer}
+                    {cert.issuer} {cert.date ? `· ${cert.date}` : ''}
                   </span>
                   <p className="text-lg font-heading font-black text-muted-foreground group-hover:text-foreground transition-colors leading-tight mb-6 tracking-tight">
                     {cert.name}
                   </p>
-                  <div className="mt-auto flex items-center gap-2 text-primary font-heading font-black text-xs uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0">
-                    Verify Credential <ExternalLink size={14} />
-                  </div>
+                  {cert.link && (
+                    <a 
+                      href={cert.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="mt-auto flex items-center gap-2 text-primary font-heading font-black text-xs uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0"
+                    >
+                      Verify Credential <ExternalLink size={14} />
+                    </a>
+                  )}
                 </div>
               </motion.div>
             </ThreeDCard>
           ))}
         </div>
+        {certifications.length === 0 && (
+          <p className="text-center text-muted-foreground mt-8 font-body">No certifications added yet.</p>
+        )}
       </div>
     </section>
   );
 };
-
 
 export default CertificationsSection;

@@ -1,0 +1,134 @@
+{
+  "personal": {
+    "name": "Kishore Yadav Chinthala",
+    "email": "22211A1121@gmail.com",
+    "phone": "",
+    "location": "",
+    "linkedin": "https://www.linkedin.com/in/kishore-chinthala-b57a45265/",
+    "github": "",
+    "portfolio": ""
+  },
+  "socialLinks": {
+    "linkedin": "https://www.linkedin.com/in/kishore-chinthala-b57a45265/",
+    "github": "",
+    "twitter": "",
+    "leetcode": "",
+    "hackerrank": "",
+    "portfolio": ""
+  },
+  "summary": "Integration-focused Biomedical Engineering undergraduate (2026) with hands-on experience building scalable API-driven systems and healthcare data workflows. Skilled in REST API integration, interoperability, and cloud platforms like Supabase, Azure, and Firebase. Familiar with HL7 v2, FHIR, CDA, DICOM, LOINC, and SNOMED. Proven ability to develop production-ready applications, data pipelines, and collaborate in Agile environments to deliver efficient integration solutions.",
+  "targetRole": "",
+  "skills": [
+    "Python",
+    "TypeScript",
+    "JavaScript (React)",
+    "MATLAB",
+    "Dart (Flutter)",
+    "HL7 v2",
+    "FHIR",
+    "CDA",
+    "DICOM",
+    "LOINC",
+    "SNOMED",
+    "ISO 13485",
+    "ISO 14971",
+    "REST API Integration",
+    "API Design",
+    "System Integration",
+    "Data Integration",
+    "JSON/XML",
+    "OAuth 2.0 (SSO)",
+    "OpenAI API",
+    "Fermion API",
+    "Azure Communication Services",
+    "PostgreSQL (Supabase)",
+    "Firebase (Auth)",
+    "SQL",
+    "Azure Cloud Services",
+    "CI/CD Pipelines",
+    "Git",
+    "Agile",
+    "Secure API Design",
+    "HTTP/HTTPS"
+  ],
+  "experiences": [
+    {
+      "role": "Software Developer Intern",
+      "company": "ApplyWizz",
+      "period": "Feb 2026 – Present",
+      "desc": "Contributed to the development of scalable web and mobile applications. Developed career.applywizz.ai, an AI-driven recruitment platform with automated candidate evaluation and API-based workflows. Enhanced Link Spec, a Flutter-based professional networking application with real-time backend integration. Implemented REST API integrations, authentication systems, and cloud-based data handling using Supabase and Firebase. Collaborated in an Agile environment to design, develop, and deploy production-ready solutions."
+    },
+    {
+      "role": "Project Experience",
+      "company": "",
+      "period": "2022-2025",
+      "desc": "Developed a production-grade AI-driven recruitment platform to automate candidate evaluation and hiring workflows. Built REST API-based integration pipelines for resume parsing, scoring, and data processing. Integrated OpenAI API and Fermion API for real-time assessment tracking. Implemented secure authentication and automated email workflows using Azure Communication Services. Designed scalable cloud architecture using Supabase and followed Agile development practices. Developed a cross-platform mobile application using Flutter for professional networking and content sharing. Implemented Google OAuth 2.0 for secure authentication. Integrated Firebase services for real-time database, storage, and notifications. Built API-driven features including AI-powered profile summaries and recommendations. Designed responsive UI/UX for Android and iOS platforms ensuring performance and scalability. Developed an assistive indoor navigation system for visually impaired individuals using RFID, QR codes, and Arduino. Implemented A* algorithm for shortest path navigation and integrated an ML model to detect and track live user location. Designed navigation logic for real-time guidance and optimized path planning. Conducted validation and performance testing to ensure system reliability in real-world environments. Developed a Python-based system to translate Indian Sign Language into text and speech. Implemented real-time hand gesture detection using computer vision techniques (OpenCV). Enabled multi-language speech output through API integration to support diverse users. Applied verification and validation (V&V) techniques to ensure system accuracy, performance, and reliability."
+    }
+  ],
+  "educations": [
+    {
+      "degree": "B-Tech - Biomedical Engineering",
+      "institution": "B.V Raju Institute of Technology",
+      "year": "2026",
+      "grade": "CGPA – 8.14 (up to 7 semester)"
+    },
+    {
+      "degree": "B. Tech – AL&ML (Minor)",
+      "institution": "B.V Raju Institute of Technology",
+      "year": "2026",
+      "grade": "CGPA – 8.8"
+    },
+    {
+      "degree": "Intermediate",
+      "institution": "Narayana Junior College",
+      "year": "2022",
+      "grade": "Percentage – 87.1%"
+    },
+    {
+      "degree": "SSC",
+      "institution": "Sri Chaitanya High School",
+      "year": "2020",
+      "grade": "CGPA – 10"
+    }
+  ],
+  "projects": [],
+  "certifications": [
+    {
+      "name": "ISO 13485:2016 Quality Management System for Medical Devices – Complete QA Course",
+      "issuer": "Udemy",
+      "date": "September 2025",
+      "link": ""
+    },
+    {
+      "name": "Mini Project on Citizens Grievances Portal",
+      "issuer": "PALS at IITM",
+      "date": "December 2023",
+      "link": ""
+    },
+    {
+      "name": "Workshop on Cancer Biology",
+      "issuer": "Edufabrica (IITH)",
+      "date": "April 2024",
+      "link": ""
+    },
+    {
+      "name": "Soft skills",
+      "issuer": "IIT Roorkee (NPTEL)",
+      "date": "October 2024",
+      "link": ""
+    },
+    {
+      "name": "English Language for Competitive Exams",
+      "issuer": "IIT Madras (NPTEL)",
+      "date": "April 2025",
+      "link": ""
+    },
+    {
+      "name": "Signal Processing with MATLAB",
+      "issuer": "MATLAB",
+      "date": "February 2025",
+      "link": ""
+    }
+  ],
+  "custom": []
+}

@@ -3,47 +3,44 @@ import { motion } from "framer-motion";
 import { ArrowDown, Download, Database, Zap, Server, BarChart3 } from "lucide-react";
 import { ThreeDIcon } from "./3d/ThreeDIcon";
 
-const HeroSection = () => {
+interface HeroSectionProps {
+  data: any;
+}
+
+const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
+  const { personal, targetRole, summary, stats } = data;
+  const nameParts = personal.name.split(' ');
+  const firstName = nameParts[0] || 'Your';
+  const lastName = nameParts.slice(1).join(' ') || 'Name';
+
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-
-      {/* Background Effects */}
+      {/* ... effects ... */}
       <div className="absolute top-1/4 -right-20 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse" />
       <div className="absolute bottom-1/4 -left-20 w-72 h-72 bg-teal/10 rounded-full blur-[100px] animate-pulse" />
 
-      {/* SINGLE COLUMN CENTERED */}
       <div className="max-w-4xl mx-auto px-6 w-full text-center relative z-10">
-
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
           className="space-y-8"
         >
-
-          {/* TOP BADGE */}
           <div className="flex justify-center items-center gap-4">
             <ThreeDIcon icon={Database} size={26} color="hsl(var(--primary))" />
             <div className="h-px w-16 bg-gradient-to-r from-primary to-transparent" />
             <span className="text-sm tracking-[0.4em] text-primary uppercase font-heading">
-              Data Systems Architect
+              {targetRole || 'Professional'}
             </span>
           </div>
 
-          {/* NAME */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-black leading-[0.9] tracking-tight">
-            <span className="gradient-text">Sowjanya</span>
+            <span className="gradient-text">{firstName}</span>
             <br />
-            <span className="text-foreground">Allam</span>
+            <span className="text-foreground">{lastName}</span>
           </h1>
 
-          {/* DESCRIPTION */}
-          <p className="max-w-2xl mx-auto text-muted-foreground text-lg md:text-xl leading-relaxed">
-            Engineering robust data ecosystems using{" "}
-            <span className="text-foreground font-semibold">Azure & SnowFlake</span>. 
-            Transforming raw data into high-velocity insights through{" "}
-            <span className="text-primary italic">Lakehouse architectures</span>.
-          </p>
+
 
           {/* BUTTONS */}
           <div className="flex flex-wrap justify-center gap-4 pt-4">
@@ -75,11 +72,11 @@ const HeroSection = () => {
 
           {/* STATS */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-10 border-t border-border/10">
-            {[
-              { label: "Years Experience", value: "4+", icon: Zap },
-              { label: "Data Processed", value: "4TB+", icon: BarChart3 },
-              { label: "System Stability", value: "99.9%", icon: Database },
-            ].map((stat, i) => (
+            {(stats && stats.length > 0 ? stats : [
+              { label: "Years Experience", value: "3+", icon: Zap },
+              { label: "Projects Completed", value: "10+", icon: BarChart3 },
+              { label: "Technologies", value: "15+", icon: Database },
+            ]).map((stat, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
@@ -87,7 +84,7 @@ const HeroSection = () => {
                 transition={{ delay: 0.4 + i * 0.1 }}
                 className="flex flex-col items-center gap-2"
               >
-                <ThreeDIcon icon={stat.icon} size={22} color="hsl(var(--primary))" />
+                <ThreeDIcon icon={stat.icon || [Zap, BarChart3, Database][i] || Database} size={22} color="hsl(var(--primary))" />
                 <p className="text-2xl font-bold">{stat.value}</p>
                 <p className="text-xs text-muted-foreground uppercase tracking-wider">
                   {stat.label}

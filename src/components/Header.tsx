@@ -5,11 +5,18 @@ import { Sun, Moon, Menu, X } from "lucide-react";
 
 const navItems = ["About", "Experience", "Projects", "Skills", "Education", "Certifications", "Contact"];
 
-const Header = () => {
+interface HeaderProps {
+  data: any;
+}
+
+const Header: React.FC<HeaderProps> = ({ data }) => {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("");
   const [mobileOpen, setMobileOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
+
+  const nameParts = (data?.personal?.name || '').split(' ');
+  const initials = nameParts.map((p: string) => p[0]).join('').toUpperCase() || 'P';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -34,7 +41,7 @@ const Header = () => {
     >
       <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="font-heading font-bold text-xl gradient-text">
-          SA
+          {initials}
         </button>
         <div className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (

@@ -15,34 +15,49 @@ import ContactSection from "@/components/ContactSection";
 import { PageTransition3D } from "@/components/3d/PageTransition3D";
 import { ThreeDIcon } from "@/components/3d/ThreeDIcon";
 import { Heart } from "lucide-react";
+import { usePortfolioData } from "@/hooks/usePortfolioData";
 
 const PortfolioContent = () => {
   const [loaded, setLoaded] = useState(false);
   const onComplete = useCallback(() => setLoaded(true), []);
+  const { data, loading } = usePortfolioData();
+
+  if (loading) return <LoadingScreen onComplete={onComplete} />;
+
+  const portfolio = data || {
+    personal: { name: "Loading...", email: "", phone: "", location: "", linkedin: "", github: "", portfolio: "" },
+    socialLinks: { linkedin: "", github: "", twitter: "", leetcode: "", hackerrank: "", portfolio: "" },
+    summary: "",
+    skills: [],
+    experiences: [],
+    educations: [],
+    projects: [],
+    certifications: []
+  };
 
   return (
     <>
       {!loaded && <LoadingScreen onComplete={onComplete} />}
       {loaded && (
         <div className="relative min-h-screen">
-          <Header />
+          <Header data={portfolio} />
           <PageTransition3D>
             <div className="relative">
               <DataFlowBackground />
               <main className="relative z-10">
-                <HeroSection />
-                <AboutSection />
-                <ExperienceSection />
-                <ProjectsSection />
-                <SkillsSection />
-                <EducationSection />
-                <CertificationsSection />
-                <ContactSection />
+                <HeroSection data={portfolio} />
+                <AboutSection data={portfolio} />
+                <ExperienceSection data={portfolio} />
+                <ProjectsSection data={portfolio} />
+                <SkillsSection data={portfolio} />
+                <EducationSection data={portfolio} />
+                <CertificationsSection data={portfolio} />
+                <ContactSection data={portfolio} />
                 <footer className="py-12 px-6 border-t border-border/10 text-center bg-background/50 backdrop-blur-md">
                   <div className="flex flex-col items-center gap-4">
                     <ThreeDIcon icon={Heart} color="hsl(var(--primary))" size={32} className="mb-2" />
                     <p className="text-sm text-muted-foreground font-body tracking-wider">
-                      © 2025 Sowjanya Allam · Crafted with Precision
+                      © {new Date().getFullYear()} {portfolio.personal.name} · Crafted with Precision
                     </p>
                     <div className="h-1 w-24 bg-gradient-to-r from-transparent via-primary/50 to-transparent rounded-full" />
                   </div>
